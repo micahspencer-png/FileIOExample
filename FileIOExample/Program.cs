@@ -66,8 +66,11 @@ namespace FileIOExample
             int count = 0;
             using (StreamReader currentFile = new StreamReader(path))
             {
-                currentFile.ReadLine();
-                count++;
+                while (!currentFile.EndOfStream)
+                {
+                    currentFile.ReadLine();
+                    count++;
+                }
             }
 
             return count;
@@ -90,7 +93,7 @@ namespace FileIOExample
                     customerData[3, customerNumber] = temp[3].Replace("\"", "");
                     customerData[4, customerNumber] = temp[4];
                     customerNumber++;
-                    Console.WriteLine(temp[0]);
+                    //Console.WriteLine(temp[0]);
                 }   
             }
 
@@ -105,10 +108,11 @@ namespace FileIOExample
             
                 for ( int column = 0; column < customerData.GetLength(0);column++) 
                 {
-                    formattedRow += customerData[column,row].PadRight(20) ;
-                    Console.WriteLine(customerData[column,row]);
+                    formattedRow += customerData[column,row].PadRight(15) ;
+                    //Console.WriteLine(customerData[column,row]);
                 }
-
+                Console.WriteLine(formattedRow);
+                formattedRow = "";
             }
             
         }
