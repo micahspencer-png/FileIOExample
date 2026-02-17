@@ -4,12 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string filePath = "TestFile.txt";
+            WriteToFile(filePath);
             
-            
-            
-            
-            Console.Read();
+            //Console.Read();
+        }
+
+        static void WriteToFile(string path) 
+        {
+            using (StreamWriter currentFile = File.CreateText(path))
+            {
+                currentFile.WriteLine("Wake up Neo. . .");
+            }
         }
     }
 }
